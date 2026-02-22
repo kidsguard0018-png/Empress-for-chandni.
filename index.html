@@ -1,0 +1,80 @@
+<script>
+
+/* 🌟 Soft Background Glow Effect */
+let glow = document.createElement("div");
+glow.style.position = "fixed";
+glow.style.top = "0";
+glow.style.left = "0";
+glow.style.width = "100%";
+glow.style.height = "100%";
+glow.style.background = "radial-gradient(circle at center, rgba(255,0,100,0.2), transparent 70%)";
+glow.style.animation = "glowMove 6s infinite alternate";
+glow.style.pointerEvents = "none";
+glow.style.zIndex = "0";
+document.body.appendChild(glow);
+
+let style = document.createElement("style");
+style.innerHTML = `
+@keyframes glowMove {
+  0% { transform: scale(1); opacity:0.6; }
+  100% { transform: scale(1.2); opacity:0.9; }
+}
+`;
+document.head.appendChild(style);
+
+
+/* 🌹 Rose Rain with Floating Effect */
+function createRose(){
+  const rose = document.createElement("div");
+  rose.innerHTML = "🌹";
+  rose.style.position = "fixed";
+  rose.style.top = "-50px";
+  rose.style.left = Math.random() * window.innerWidth + "px";
+  rose.style.fontSize = (20 + Math.random() * 30) + "px";
+  rose.style.pointerEvents = "none";
+  rose.style.zIndex = "9999";
+  rose.style.transition = "transform 6s linear, opacity 6s linear";
+
+  document.body.appendChild(rose);
+
+  setTimeout(() => {
+    rose.style.transform = 
+      "translateY(" + window.innerHeight + "px) translateX(" + (Math.random()*100 - 50) + "px)";
+    rose.style.opacity = "0";
+  }, 50);
+
+  setTimeout(() => {
+    rose.remove();
+  }, 6000);
+}
+
+setInterval(createRose, 400);
+
+
+/* ✨ Sparkle Effect */
+function createSparkle(){
+  const sparkle = document.createElement("div");
+  sparkle.innerHTML = "✨";
+  sparkle.style.position = "fixed";
+  sparkle.style.top = Math.random() * window.innerHeight + "px";
+  sparkle.style.left = Math.random() * window.innerWidth + "px";
+  sparkle.style.fontSize = (10 + Math.random() * 15) + "px";
+  sparkle.style.opacity = "0.8";
+  sparkle.style.pointerEvents = "none";
+  sparkle.style.transition = "opacity 2s ease";
+  sparkle.style.zIndex = "9998";
+
+  document.body.appendChild(sparkle);
+
+  setTimeout(() => {
+    sparkle.style.opacity = "0";
+  }, 100);
+
+  setTimeout(() => {
+    sparkle.remove();
+  }, 2000);
+}
+
+setInterval(createSparkle, 300);
+
+</script>
